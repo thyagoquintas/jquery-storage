@@ -1,6 +1,7 @@
 /*!
- * jQuery Storage plugin v1.0.1
+ * jQuery Storage plugin v1.0.2
  * 		v1.0.1 - Fix bug when jQuery try read value to radio or checkbox;
+ *		v1.0.2 - Change for Array the return value
  * 
  * Copyright 2012, Thyago Quintas (dev@thyagoquintas.com.br)
  * https://github.com/thyagoquintas/jquery-storage/
@@ -22,14 +23,18 @@
 				    'name' : $(this).attr("id"),
 				    'location' : $(this).storage('support') ? 'localStorage':'cookies'
 			}, content);
+			var object = [];
 			
 			if(contents['location'] == 'localStorage'){
-		    	objects.push(localStorage[contents['name']]);
+		    	object.push(contents['name']);
+		    	object.push(localStorage[contents['name']]);
 	        }else if(contents['location'] == 'cookie') {
-		        objects.push($.cookie(contents['name']));
+		        object.push(contents['name']);
+		        object.push($.cookie(contents['name']));
 	        }else {
 		        $.error('Location not accepted.');
 	        }
+	        objects.push(object);
 		});
 		return objects;	
     },//Close return

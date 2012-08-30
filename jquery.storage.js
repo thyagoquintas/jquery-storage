@@ -1,7 +1,9 @@
 /*!
- * jQuery Storage plugin v1.0
+ * jQuery Storage plugin v1.0.1
+ * 		v1.0.1 - Fix bug when jQuery try read value to radio or checkbox;
  * 
  * Copyright 2012, Thyago Quintas (dev@thyagoquintas.com.br)
+ * https://github.com/thyagoquintas/jquery-storage/
  * 
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://www.opensource.org/licenses/mit-license.php
@@ -54,7 +56,7 @@
     update : function(content) {
     	this.each(function(){
 	    	var contents = $.extend( {
-	          'value' : $(this).val(), 
+	          'value' : (($(this).attr('type') == "checkbox") || ($(this).attr('type') == "radio")) ?  $(this).is(':checked') : $(this).val(),
 	          'name' : $(this).attr("id"),
 	          'location' : $(this).storage('support') ? 'localStorage':'cookies'
 	        }, content);

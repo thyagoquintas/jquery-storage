@@ -15,34 +15,33 @@ Include script after the jQuery library (unless you are packaging scripts someho
 
 To read information
 
-    $('#id').storage();
-    $('type').storage();
-    $('.class').storage();
+    $.storage( { 'key' : 'foo'} );
+    JSON.parse($.storage( { 'key' : 'foo'} ));
 
 To read information (all contents)
 
-    $('#id').storage({'name' : 'test', 'location' : 'cookie'});
+    $.storage({'key' : 'foo', 'location' : 'cookie'});
+    JSON.parse($.storage({'key' : 'foo', 'location' : 'cookie'}));
 
 To update information or create
     
-    $('#id').storage('update');
+    $.storage('update', { 'key' : 'foo', 'value' : 'bar' });
     
 To update information or create (all contents)
 
-    $('#id').storage('update', {'name' : 'test', 'value' : 'test1', 'location' : 'localStorage'});
+    $.storage('update', {'key' : 'foo', 'value' : 'bar', 'location' : 'localStorage'});
     
 To remove
 
-     $('#id').storage('remove');
+     $.storage('remove', { 'key' : 'foo' });
     
-
 To remove (all contents)
 
-    $('#id').storage('remove', {'name' : 'test', 'location' : 'localStorage'});
+    $.storage('remove', {'key' : 'foo', 'location' : 'cookie'});
 
 If have support to localStorage
 
-    $('#id').storage('support');
+    $.storage('support');
 
 ## Authors
 [Thyago Quintas](https://github.com/thyagoquintas)

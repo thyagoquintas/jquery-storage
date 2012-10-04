@@ -43,5 +43,13 @@ If have support to localStorage
 
     $.storage('support');
 
+To clear all storage
+
+     $.storage('clear');
+    
+To clear all storage (all contents)
+
+    $.storage('clear', {'location' : 'cookie'});
+
 ## Authors
 [Thyago Quintas](https://github.com/thyagoquintas)

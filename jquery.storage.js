@@ -73,6 +73,23 @@
     support : function(){
 	    return ('localStorage' in window) && window['localStorage'] !== null;
     }
+    
+    clear : function(content){
+	    var contents = $.extend( {
+	    	'location' : $.storage('support') ? 'localStorage':'cookies'
+	    }, content);
+	   
+	    if(contents['location'] == 'localStorage'){
+		    localStorage.clear();
+	    }else if(contents['location'] == 'cookie') {
+		    var cookies = document.cookie.split(";");
+		    for (var i = 0; i < cookies.length; i++)
+		       $.removeCookie(cookies[i].split("=")[0].replace(" ",""));
+	    }else {
+		    $.error('Location not accepted.');
+	    }
+    }
+    
   };
 
   $.storage = function(method) {
